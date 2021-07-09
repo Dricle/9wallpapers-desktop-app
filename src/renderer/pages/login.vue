@@ -1,35 +1,36 @@
 <template>
-  <div class="e-nuxt-container">
-    <div class="e-nuxt-content">
-      <button @click="setWallpaper">download</button>
-    </div>
-  </div>
+    <v-main class="grey lighten-3">
+        <v-container>
+            <v-row>
+                <v-col>
+                    <v-sheet
+                        min-height="70vh"
+                        rounded="lg"
+                    >
+                        <!--  -->
+                    </v-sheet>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-main>
 </template>
 
 <script>
-const wallpaper = require('wallpaper')
-const download = require('download')
 export default {
-  data: () => ({
-    valid: false,
-    firstname: '',
-    lastname: '',
-    nameRules: [
-      v => !!v || 'Name is required',
-      v => v.length <= 10 || 'Name must be less than 10 characters'
-    ],
-    email: '',
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+/.test(v) || 'E-mail must be valid'
-    ]
-  }),
+    layout: 'login',
 
-  methods: {
-    async setWallpaper () {
-      await download('https://9wallpapers.com/cdn/wallpapers/XRmddQQeRqE4bmQ5rHWZOBs6gBOFoNPHH30PRPnJ.jpg', 'dist')
-      await wallpaper.set('dist/XRmddQQeRqE4bmQ5rHWZOBs6gBOFoNPHH30PRPnJ.jpg')
+    data () {
+        return {
+            formData: {}
+        }
+    },
+
+    methods: {
+        submit () {
+            if (this.$refs.form.validate()) {
+                this.$refs.form.$el.submit()
+            }
+        }
     }
-  }
 }
 </script>

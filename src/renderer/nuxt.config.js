@@ -1,37 +1,34 @@
-/**
- * By default, Nuxt.js is configured to cover most use cases.
- * This default configuration can be overwritten in this file
- * @link {https://nuxtjs.org/guide/configuration/}
- */
-
 module.exports = {
-  ssr: false,
-  target: 'static',
-  head: {
-    title: 'electron-nuxt',
-    meta: [{ charset: 'utf-8' }]
-  },
-  loading: false,
-  plugins: [
-    { ssr: true, src: '@/plugins/icons.js' }
+    ssr: false,
+    target: 'static',
+    head: {
+        title: '9wallpapers.com desktop application',
+        meta: [{ charset: 'utf-8' }]
+    },
+    loading: false,
+    plugins: [
 
-  ],
-  buildModules: [
+    ],
+    buildModules: [
 
-  ],
-  modules: [
-    '@nuxtjs/vuetify'
-  ],
-  vuetify: {
-    theme: {
-      themes: {
-        light: {
-          primary: '#1867c0',
-          secondary: '#b0bec5',
-          accent: '#8c9eff',
-          error: '#b71c1c'
+    ],
+    modules: [
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/auth',
+        '@nuxtjs/axios'
+    ],
+    axios: {
+        baseURL: 'https://9wallpapers.com/api'
+    },
+    auth: {
+        strategies: {
+            local: {
+                endpoints: {
+                    login: { url: 'authenticate', method: 'post', propertyName: 'access_token' },
+                    user: { url: 'me', method: 'get', propertyName: 'data' },
+                    logout: { url: '/logout', method: 'post' }
+                }
+            }
         }
-      }
     }
-  }
 }

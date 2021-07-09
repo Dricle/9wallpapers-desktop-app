@@ -44,6 +44,7 @@ const macOS = {
 module.exports = {
     productName: '9wallpapers-desktop',
     appId: 'com.9wallpapers.desktop',
+    // eslint-disable-next-line no-template-curly-in-string
     artifactName: 'setup-${version}.${ext}',
     directories: {
         output: 'build'
