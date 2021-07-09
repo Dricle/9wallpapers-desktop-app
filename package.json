@@ -1,0 +1,57 @@
+{
+  "name": "electron-nuxt",
+  "version": "0.0.1",
+  "description": "9wallpapers desktop application",
+  "main": "./dist/main/index.js",
+  "scripts": {
+    "dev": "node .electron-nuxt/dev.js",
+    "build": "node .electron-nuxt/build.js",
+    "test": "",
+    "lint": "node_modules/.bin/eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter ./src",
+    "lint:fix": "yarn run lint -- --fix",
+    "preinstall": "node .electron-nuxt/check-engines.js",
+    "postinstall": "electron-builder install-app-deps & yarn run lint:fix"
+  },
+  "keywords": [],
+  "author": "Clément Rigo <rigoclement@mydnic.be>",
+  "license": "MIT",
+  "homepage": "https://github.com/michalzaq12/electron-nuxt/blob/master/README.md",
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "resolutions": {
+    "@types/node": "12.12.6"
+  },
+  "devDependencies": {
+    "@mdi/font": "5.9.55",
+    "@nuxtjs/eslint-config": "6.0.0",
+    "@nuxtjs/vuetify": "1.11.3",
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.13.6",
+    "@xpda-dev/core": "^0.1.6",
+    "@xpda-dev/electron-builder": "^0.2.1",
+    "@xpda-dev/electron-launcher": "^0.3.0",
+    "@xpda-dev/webpack-step": "^0.1.2",
+    "babel-eslint": "10.1.0",
+    "browser-env": "3.3.0",
+    "cross-env": "7.0.3",
+    "deepmerge": "4.2.2",
+    "electron": "12.0.6",
+    "electron-builder": "22.11.3",
+    "electron-devtools-installer": "3.2.0",
+    "eslint": "7.25.0",
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-loader": "4.0.2",
+    "node-sass": "4.14.1",
+    "nuxt": "2.15.6",
+    "roboto-fontface": "0.10.0",
+    "sass-loader": "10.0.2",
+    "vuetify": "2.5.1",
+    "webpack": "4.44.2",
+    "webpack-node-externals": "2.5.2"
+  },
+  "dependencies": {
+    "download": "^8.0.0",
+    "wallpaper": "^5.0.1"
+  }
+}
