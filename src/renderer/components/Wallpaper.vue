@@ -1,17 +1,25 @@
 <template>
-    <div>
-        hello
-    </div>
+    <button @click="setWallpaper">
+        <img :src="wallpaper.thumbnail_url" alt="wallpaper">
+    </button>
 </template>
 
 <script>
 const wallpaper = require('wallpaper')
 const download = require('download')
 export default {
+    props: {
+        wallpaper: {
+            type: Object,
+            required: true
+        }
+    },
     methods: {
         async setWallpaper () {
-            await download('https://9wallpapers.com/cdn/wallpapers/XRmddQQeRqE4bmQ5rHWZOBs6gBOFoNPHH30PRPnJ.jpg', 'dist')
-            await wallpaper.set('dist/XRmddQQeRqE4bmQ5rHWZOBs6gBOFoNPHH30PRPnJ.jpg')
+            const filename = this.wallpaper.url.substring(this.wallpaper.url.lastIndexOf('/') + 1)
+
+            await download(this.wallpaper.url, 'dist')
+            await wallpaper.set('dist/' + filename)
         }
     }
 }

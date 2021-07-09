@@ -7,20 +7,23 @@ module.exports = {
     },
     loading: false,
     plugins: [
-
+        '~/plugins/globals'
     ],
-    buildModules: [
-
-    ],
+    buildModules: ['@nuxtjs/tailwindcss'],
     modules: [
-        '@nuxtjs/tailwindcss',
         '@nuxtjs/auth',
         '@nuxtjs/axios'
     ],
     axios: {
         baseURL: 'https://9wallpapers.com/api'
     },
+    tailwindcss: {
+        cssPath: '~/assets/css/app.css'
+    },
     auth: {
+        plugins: [
+            '~/plugins/repository'
+        ],
         strategies: {
             local: {
                 endpoints: {
