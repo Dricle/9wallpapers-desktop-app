@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     middleware: 'auth',
 
@@ -76,9 +78,14 @@ export default {
 
     created () {
         this.getWallpapers()
+
+        this.runWallpaperChanger()
     },
 
     methods: {
+        ...mapActions({
+            runWallpaperChanger: 'wallpaper/runWallpaperChanger'
+        }),
         getWallpapers () {
             this.$wallpaperRepository.liked()
                 .then((response) => {
