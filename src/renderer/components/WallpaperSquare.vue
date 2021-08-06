@@ -8,6 +8,7 @@
 
 <script>
 import wallpaperSetter from '../mixins/wallpaperSetter'
+
 export default {
     mixins: [wallpaperSetter],
 
