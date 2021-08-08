@@ -19,12 +19,10 @@ ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
 
     fs.readdir(storagePath, (err, files) => {
         if (err) { throw err }
-        console.log(files)
+
         for (const file of files) {
             if (file !== fileName) {
-                console.log(storagePath + '/' + file, fileName)
                 fs.unlink(storagePath + '/' + file, (error) => {
-                    console.log(error)
                     if (error) { throw error }
                 })
             }

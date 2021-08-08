@@ -13,7 +13,7 @@ export const actions = {
 
         setTimeout(() => {
             dispatch('runWallpaperChanger')
-        }, 1000 * 60 * 1) // 15 minutes
+        }, 1000 * 60 * 10) // 10 minutes
     },
 
     setWallpaper ({ dispatch }, wallpaperObject) {
