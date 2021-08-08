@@ -1,6 +1,6 @@
 {
   "name": "9wallpapers-desktop",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "9wallpapers desktop application",
   "main": "./dist/main/index.js",
   "scripts": {
