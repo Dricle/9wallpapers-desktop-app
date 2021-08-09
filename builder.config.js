@@ -3,7 +3,7 @@ const ICONS_DIR = 'build/icons/'
 const windowsOS = {
     win: {
         icon: ICONS_DIR + 'win-icon.ico',
-        publisherName: 'michal',
+        publisherName: '9wallpapers.com',
         target: 'nsis'
     },
 
@@ -42,7 +42,7 @@ const macOS = {
 }
 
 module.exports = {
-    productName: '9wallpapers-desktop',
+    productName: '9wallpapers',
     appId: 'com.9wallpapers.desktop',
     // eslint-disable-next-line no-template-curly-in-string
     artifactName: 'setup-${version}.${ext}',

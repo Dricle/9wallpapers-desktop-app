@@ -12,13 +12,15 @@ app.on('window-all-closed', function () {
 
 ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
     const storagePath = 'tmp'
-
+    console.log('main set-wallpaper')
     fs.writeFileSync(storagePath + '/' + fileName, await download(downloadUrl, storagePath))
-
+    console.log(storagePath + '/' + fileName)
     await wallpaper.set(storagePath + '/' + fileName)
+    console.log('wallpaper.set')
 
     fs.readdir(storagePath, (err, files) => {
         if (err) { throw err }
+        console.log(files)
 
         for (const file of files) {
             if (file !== fileName) {

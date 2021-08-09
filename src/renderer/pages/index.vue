@@ -78,7 +78,7 @@ export default {
 
     created () {
         this.getWallpapers()
-
+        console.log('index created')
         this.runWallpaperChanger()
     },
 

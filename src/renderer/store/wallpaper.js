@@ -6,6 +6,8 @@ export const state = () => ({
 
 export const actions = {
     runWallpaperChanger ({ dispatch }) {
+        console.log('runWallpaperChanger')
+
         this.$wallpaperRepository.random()
             .then((response) => {
                 dispatch('setWallpaper', response.data)
@@ -20,6 +22,8 @@ export const actions = {
         const fileName = wallpaperObject.url.substring(wallpaperObject.url.lastIndexOf('/') + 1)
 
         const downloadUrl = this.$wallpaperRepository.downloadUrl(wallpaperObject.id)
+
+        console.log('setWallpaper', fileName, downloadUrl)
 
         ipcRenderer.send('set-wallpaper', {
             downloadUrl,
