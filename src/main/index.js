@@ -11,16 +11,26 @@ app.on('window-all-closed', function () {
 })
 
 ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
-    const storagePath = 'tmp'
-    console.log('main set-wallpaper')
+    const storagePath = 'tmp/9wpp'
+
+    if (!fs.existsSync(storagePath)) {
+        fs.mkdirSync(storagePath, { recursive: true });
+    }
+
     fs.writeFileSync(storagePath + '/' + fileName, await download(downloadUrl, storagePath))
-    console.log(storagePath + '/' + fileName)
-    await wallpaper.set(storagePath + '/' + fileName)
-    console.log('wallpaper.set')
+
+    try {
+        console.log('===========')
+        console.log('TRY SET WPP')
+        console.log('===========')
+        await wallpaper.set(storagePath + '/' + fileName)
+    } catch (error) {
+        console.error(error)
+    }
+
 
     fs.readdir(storagePath, (err, files) => {
         if (err) { throw err }
-        console.log(files)
 
         for (const file of files) {
             if (file !== fileName) {

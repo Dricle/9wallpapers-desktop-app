@@ -23,8 +23,6 @@ export const actions = {
 
         const downloadUrl = this.$wallpaperRepository.downloadUrl(wallpaperObject.id)
 
-        console.log('setWallpaper', fileName, downloadUrl)
-
         ipcRenderer.send('set-wallpaper', {
             downloadUrl,
             fileName
