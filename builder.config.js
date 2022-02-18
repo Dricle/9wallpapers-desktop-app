@@ -65,6 +65,10 @@ module.exports = {
         {
             from: 'src/extraResources/',
             to: ''
+        },
+        {
+            from: 'node_modules/wallpaper/source/',
+            to: 'app.asar.unpacked/dist/main'
         }
     ],
     ...windowsOS,

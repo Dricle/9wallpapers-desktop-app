@@ -1,6 +1,6 @@
 {
   "name": "9wallpapers",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "9wallpapers desktop application",
   "main": "./dist/main/index.js",
   "scripts": {
@@ -44,6 +44,7 @@
     "@tailwindcss/forms": "^0.3.3",
     "caniuse-lite": "^1.0.30001310",
     "download": "^8.0.0",
+    "hazardous": "^0.3.0",
     "wallpaper": "^5.0.1"
   }
 }

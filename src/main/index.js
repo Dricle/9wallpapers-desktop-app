@@ -1,3 +1,4 @@
+require('hazardous');
 import { app, ipcMain } from 'electron'
 const fs = require('fs')
 const wallpaper = require('wallpaper')
