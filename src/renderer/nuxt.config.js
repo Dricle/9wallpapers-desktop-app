@@ -7,7 +7,8 @@ module.exports = {
     },
     loading: false,
     plugins: [
-        '~/plugins/globals'
+        '~/plugins/globals',
+        '~/plugins/filters'
     ],
     build: {
         babel: {

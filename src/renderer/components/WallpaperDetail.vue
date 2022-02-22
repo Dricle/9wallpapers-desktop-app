@@ -3,7 +3,7 @@
         <div class="flex-1 space-y-6">
             <img :src="wallpaper.url" alt="Wallpaper image">
         </div>
-        <aside class="p-8 bg-gray-800 w-96">
+        <aside class="p-8 bg-gray-800 w-80">
             <div class="space-y-8">
                 <div>
                     <h3 class="font-medium text-gray-100">
@@ -24,7 +24,7 @@
                                 Created
                             </dt>
                             <dd class="text-gray-400">
-                                {{ wallpaper.created_at }}
+                                {{ wallpaper.created_at | format('DD MMM YYYY') }}
                             </dd>
                         </div>
 
@@ -57,7 +57,8 @@
                     </dl>
                 </div>
 
-                <div>
+                <div class="flex items-center space-x-4">
+                    <like-button :wallpaper="wallpaper"></like-button>
                     <button
                         class="block w-full px-4 py-2 text-sm font-medium text-center text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         @click="setWallpaper(wallpaper)"

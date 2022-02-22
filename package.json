@@ -43,6 +43,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.3.3",
     "caniuse-lite": "^1.0.30001310",
+    "dayjs": "^1.10.7",
     "download": "^8.0.0",
     "hazardous": "^0.3.0",
     "wallpaper": "^5.0.1"
