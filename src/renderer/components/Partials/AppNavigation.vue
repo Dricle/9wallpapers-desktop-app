@@ -6,7 +6,7 @@
         <nuxt-link to="/" class="px-5 py-3 text-xl font-semibold text-green-500 uppercase hover:bg-green-800">
             Collection
         </nuxt-link>
-        <nuxt-link to="/" class="px-5 py-3 text-xl font-semibold text-green-500 uppercase hover:bg-green-800">
+        <nuxt-link to="/settings" class="px-5 py-3 text-xl font-semibold text-green-500 uppercase hover:bg-green-800">
             Settings
         </nuxt-link>
     </div>
