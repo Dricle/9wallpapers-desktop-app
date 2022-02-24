@@ -4,8 +4,8 @@ export default ({ app: { $axios } }) => ({
         return $axios.$get('/user/wallpapers')
     },
 
-    random () {
-        return $axios.$get('/user/wallpapers/random')
+    random (params = {}) {
+        return $axios.$get('/user/wallpapers/random', {params})
     },
 
     like (id) {

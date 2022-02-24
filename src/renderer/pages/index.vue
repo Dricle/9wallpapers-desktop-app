@@ -46,19 +46,25 @@
             </div>
         </section-heading>
 
-        <div v-if="view === 'grid'" class="grid grid-cols-4 gap-4">
-            <wallpaper-square
-                v-for="wallpaper in wallpapers"
-                :key="'grid'+wallpaper.id"
-                :wallpaper="wallpaper"
-            />
+        <div v-if="isLoading" class="py-10 text-center">
+            ...
         </div>
-        <div v-if="view === 'list'" class="grid grid-cols-1 gap-4">
-            <wallpaper-detail
-                v-for="wallpaper in wallpapers"
-                :key="'list'+wallpaper.id"
-                :wallpaper="wallpaper"
-            />
+
+        <div v-else>
+            <div v-if="view === 'grid'" class="grid grid-cols-4 gap-4">
+                <wallpaper-square
+                    v-for="wallpaper in wallpapers"
+                    :key="'grid'+wallpaper.id"
+                    :wallpaper="wallpaper"
+                />
+            </div>
+            <div v-if="view === 'list'" class="grid grid-cols-1 gap-4">
+                <wallpaper-detail
+                    v-for="wallpaper in wallpapers"
+                    :key="'list'+wallpaper.id"
+                    :wallpaper="wallpaper"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -72,13 +78,14 @@ export default {
     data () {
         return {
             wallpapers: [],
-            view: 'grid'
+            view: 'grid',
+            isLoading: false
         }
     },
 
     created () {
         this.getWallpapers()
-        console.log('index created')
+
         this.runWallpaperChanger()
     },
 
@@ -87,9 +94,12 @@ export default {
             runWallpaperChanger: 'wallpaper/runWallpaperChanger'
         }),
         getWallpapers () {
+            this.isLoading = true
+
             this.$wallpaperRepository.liked()
                 .then((response) => {
                     this.wallpapers = response.data
+                    this.isLoading = false
                 })
         }
     }
