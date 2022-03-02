@@ -1,7 +1,7 @@
 export default ({ app: { $axios } }) => ({
 
-    liked () {
-        return $axios.$get('/user/wallpapers')
+    liked (params = {}) {
+        return $axios.$get('/user/wallpapers', { params })
     },
 
     random (params = {}) {

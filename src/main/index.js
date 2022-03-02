@@ -1,8 +1,10 @@
 require('hazardous');
-import { app, ipcMain } from 'electron'
+import { app, ipcMain, powerSaveBlocker } from 'electron'
 const fs = require('fs')
 const wallpaper = require('wallpaper')
 const download = require('download')
+
+powerSaveBlocker.start('prevent-app-suspension')
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

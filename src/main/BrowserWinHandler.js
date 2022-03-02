@@ -51,6 +51,7 @@ export default class BrowserWinHandler {
       // Dereference the window object
       this.browserWindow = null
     })
+    this.browserWindow.webContents.setBackgroundThrottling(false);
     this._eventEmitter.emit('created')
   }
 

@@ -6,7 +6,8 @@ export const state = () => ({
         interval: 10,
         allow_unliked: false,
         allow_layout_mobile: true,
-    }
+    },
+    timeout: undefined,
 })
 
 export const getters = {
@@ -24,6 +25,9 @@ export const mutations = {
     SET_SETTING(state, {key, value}) {
         state.settings[key] = value
     },
+    SET_TIMEOUT(state, timeout) {
+        state.timeout = timeout
+    }
 }
 
 export const actions = {
@@ -35,14 +39,21 @@ export const actions = {
                 dispatch('setWallpaper', response.data)
             })
 
-        const interval = getters.getSettings.interval
-
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             dispatch('runWallpaperChanger')
-        }, 1000 * 60 * interval) // 10 minutes
+        }, 1000 * 60 * getters.getSettings.interval) // 10 minutes
+        commit('SET_TIMEOUT', timeout)
     },
 
-    setWallpaper ({ dispatch }, wallpaperObject) {
+    setWallpaper({ commit, dispatch, state, getters }, wallpaperObject) {
+        clearTimeout(state.timeout)
+        const timeout = setTimeout(() => {
+            dispatch('runWallpaperChanger')
+        }, 1000 * 60 * getters.getSettings.interval) // 10 minutes
+        commit('SET_TIMEOUT', timeout)
+
+        commit('SET_WALLPAPER', wallpaperObject)
+
         const fileName = wallpaperObject.url.substring(wallpaperObject.url.lastIndexOf('/') + 1)
 
         const downloadUrl = this.$wallpaperRepository.downloadUrl(wallpaperObject.id)

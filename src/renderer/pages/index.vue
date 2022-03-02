@@ -77,22 +77,29 @@ export default {
         return {
             wallpapers: [],
             view: 'grid',
-            isLoading: false
+            isLoading: false,
+            page: 1,
         }
     },
 
     created () {
         this.getWallpapers()
+
+        window.onscroll = () => {
+            let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+
+            if (bottomOfWindow) {
+                this.page++
+                this.getWallpapers()
+            }
+        };
     },
 
     methods: {
         getWallpapers () {
-            this.isLoading = true
-
-            this.$wallpaperRepository.liked()
+            this.$wallpaperRepository.liked({page: this.page})
                 .then((response) => {
-                    this.wallpapers = response.data
-                    this.isLoading = false
+                    this.wallpapers = [...this.wallpapers, ...response.data]
                 })
         }
     }
