@@ -1,6 +1,6 @@
 <template>
     <div>
-        <wallpaper-detail :wallpaper="wallpaper"></wallpaper-detail>
+        <wallpaper-detail v-if="wallpaper" :wallpaper="wallpaper"></wallpaper-detail>
     </div>
 </template>
 
