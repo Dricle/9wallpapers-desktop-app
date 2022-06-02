@@ -11,7 +11,7 @@ app.on('window-all-closed', function () {
 })
 
 ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
-    const storagePath = 'storage'
+    const storagePath = 'storage/9wpp'
 
     if (!fs.existsSync(storagePath)) {
         fs.mkdirSync(storagePath, { recursive: true });
@@ -27,7 +27,6 @@ ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
     } catch (error) {
         console.error(error)
     }
-
 
     fs.readdir(storagePath, (err, files) => {
         if (err) { throw err }
