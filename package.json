@@ -1,6 +1,6 @@
 {
   "name": "9wallpapers-desktop",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "description": "Desktop App that changes your wallpaper based on your 9wallpapers.com collection",
   "main": "./dist/main/index.js",
   "scripts": {
