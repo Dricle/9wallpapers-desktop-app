@@ -4,7 +4,7 @@
             :id="name"
             :name="name"
             :type="type"
-            class="rounded w-full"
+            class="w-full rounded"
             :class="{
                 'border-red-400': errors && errors[name],
             }"

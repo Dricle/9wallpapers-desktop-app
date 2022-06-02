@@ -2,34 +2,35 @@ module.exports = {
     ssr: false,
     target: 'static',
     head: {
-        title: '9wallpapers.com desktop application',
-        meta: [{ charset: 'utf-8' }]
+        title: '9wallpapers-desktop',
+        meta: [{ charset: "utf-8" }]
     },
     loading: false,
     plugins: [
         '~/plugins/globals',
         '~/plugins/filters'
     ],
+    css: [
+        '@/assets/css/app.css'
+    ],
+    buildModules: [
+        '@nuxt/postcss8'
+    ],
     build: {
-        babel: {
-            plugins: [
-                ["@babel/plugin-proposal-class-properties", { "loose": true }],
-                ["@babel/plugin-proposal-private-methods", { "loose": true }],
-                ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-            ]
+        postcss: {
+            plugins: {
+                tailwindcss: {},
+                autoprefixer: {}
+            }
         }
     },
-    buildModules: ['@nuxtjs/tailwindcss'],
+    axios: {
+        baseURL: 'https://9wallpapers.com/api'
+    },
     modules: [
         '@nuxtjs/auth',
         '@nuxtjs/axios'
     ],
-    axios: {
-        baseURL: 'https://9wallpapers.com/api'
-    },
-    tailwindcss: {
-        cssPath: '~/assets/css/app.css'
-    },
     auth: {
         plugins: [
             '~/plugins/repository'
@@ -44,4 +45,4 @@ module.exports = {
             }
         }
     }
-}
+};

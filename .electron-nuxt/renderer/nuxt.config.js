@@ -38,7 +38,6 @@ const baseExtend = (config, { isClient }) => {
 
   config.plugins.push(
     new webpack.DefinePlugin({
-      'global': 'window',
       'process.resourcesPath': isClient ? resourcesPath.nuxtClient() : resourcesPath.nuxtServer()
     })
   )
@@ -66,7 +65,17 @@ const mergeConfig = customConfig => {
     if(baseConfig.build === undefined) baseConfig.build = {};
     baseConfig.build.extend = baseExtend;
   }
-  return deepmerge(baseConfig, customConfig);
+
+  if (customConfig.build !== undefined && customConfig.build.plugins !== undefined) {
+    // webpack config plugins should not use deep merge
+    let { plugins, ...rest } = customConfig.build;
+    customConfig.build = rest;
+    let result = deepmerge(baseConfig, customConfig);
+    result.build.plugins = plugins;
+    return result;
+  } else {
+    return deepmerge(baseConfig, customConfig);
+  }
 }
 
 

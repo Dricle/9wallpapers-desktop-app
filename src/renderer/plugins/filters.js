@@ -7,4 +7,3 @@ dayjs.locale('fr')
 Vue.filter('format', function (date, format) {
     return dayjs(date).locale('fr').format(format)
 })
-

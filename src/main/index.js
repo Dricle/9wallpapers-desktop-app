@@ -1,20 +1,18 @@
-require('hazardous');
-import { app, ipcMain, powerSaveBlocker } from 'electron'
+require('hazardous')
+import { app, ipcMain } from 'electron'
 const fs = require('fs')
 const wallpaper = require('wallpaper')
 const download = require('download')
 
-powerSaveBlocker.start('prevent-app-suspension')
-
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') { app.quit() }
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') app.quit()
 })
 
 ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
-    const storagePath = 'tmp/9wpp'
+    const storagePath = 'storage/9wpp'
 
     if (!fs.existsSync(storagePath)) {
         fs.mkdirSync(storagePath, { recursive: true });
@@ -30,7 +28,6 @@ ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
     } catch (error) {
         console.error(error)
     }
-
 
     fs.readdir(storagePath, (err, files) => {
         if (err) { throw err }
