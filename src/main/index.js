@@ -1,20 +1,17 @@
-require('hazardous');
-import { app, ipcMain, powerSaveBlocker } from 'electron'
+import { app, ipcMain } from 'electron'
 const fs = require('fs')
 const wallpaper = require('wallpaper')
 const download = require('download')
 
-powerSaveBlocker.start('prevent-app-suspension')
-
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') { app.quit() }
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') app.quit()
 })
 
 ipcMain.on('set-wallpaper', async function (e, { downloadUrl, fileName }) {
-    const storagePath = 'tmp/9wpp'
+    const storagePath = 'storage'
 
     if (!fs.existsSync(storagePath)) {
         fs.mkdirSync(storagePath, { recursive: true });

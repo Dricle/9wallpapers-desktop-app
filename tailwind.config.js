@@ -1,6 +1,9 @@
 module.exports = {
-    purge: [],
-    darkMode: false, // or 'media' or 'class'
+    content: [
+        './src/renderer/pages/**/*.vue',
+        './src/renderer/components/**/*.vue',
+        './src/renderer/layouts/**/*.vue',
+    ],
     theme: {
         extend: {
             fontFamily: {
@@ -8,10 +11,7 @@ module.exports = {
             }
         }
     },
-    variants: {
-        extend: {}
-    },
     plugins: [
         require('@tailwindcss/forms')
-    ]
+    ],
 }

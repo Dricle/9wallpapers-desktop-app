@@ -1,13 +1,21 @@
-# 9wallpapers.com desktop app
+# 9wallpapers-desktop
 
-This desktop app will change your device wallpaper (macos and windows) on a regular interval. It takes a random wallpaper from your [9wallpapers.com](https://9wallpapers.com) favorited collection.
+> Desktop App that changes your wallpaper based on your 9wallpapers.com collection
 
-- No need to keep a big folders of wallpaper on your computer anymore !
-- You can customize the settings and the interval of the wallpaper change.
-- Discover new wallpapers from [9wallpapers.com](https://9wallpapers.com) !
-- You can share your collection with your friends !
-- Wallpapers are automatically downloaded from [9wallpapers.com](https://9wallpapers.com), but not stored on your computer, so it doesn't take any space on your disk.
+#### Build Setup
 
-## Technical
+``` bash
+# install dependencies
+yarn install
 
-This desktop app is built with [electron](https://electronjs.org/).
+# serve app with hot reload
+yarn dev
+
+# build electron application for production
+yarn build
+
+```
+
+---
+
+This project was generated with [electron-nuxt](https://github.com/michalzaq12/electron-nuxt) v1.8.1 using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://github.com/michalzaq12/electron-nuxt/blob/master/README.md).
